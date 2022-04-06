@@ -1,26 +1,46 @@
 package com.company;
 import java.util.Scanner;
+
 public class Main {
 
 
     public static void main(String[] args) {
-
+        // Целевое количество шагов
+        int stepForDay = 10000;
         System.out.println("Доброго времени суток!");
-        System.out.println("Ваша цель на сегодня пройти " + "10000" + " шагов!");
+        System.out.println("Ваша цель на сегодня пройти " + stepForDay + " шагов!");
+
 
         Scanner scan = new Scanner(System.in);
-
         while (true) {
             printMenu();
             int command = scan.nextInt();
+
             if (command == 1) {
+                while (true) {
                 System.out.println("Внесите новую цель:");
-                int stepForDay = stepTracker.changeStepForDay();
-                System.out.println("Ваша новая цель: " + stepForDay);
+                int newStepForDay = stepTracker.changeStepForDay();
+                System.out.println("Ваша новая цель: " + newStepForDay);
+            } if (command == 2) {
+                    stepTracker.enterStatistic();
+            } else if (command == 3) {
+                System.out.println("За какой месяц показать статистику?");
+                int month = scan.nextInt();
+                stepTracker.printStatistic(month);
+                System.out.println("Напечатайте цель еще раз)");
+                int newStepForDay = scan.nextInt();
+                    stepTracker.getBestCount(newStepForDay, month);
+            } else if (command == 4) {
+                    System.out.println("Выход");
+                    break;
+                }
             } else if (command == 2) {
                 stepTracker.enterStatistic();
             } else if (command == 3) {
-                stepTracker.printStatistic();
+                System.out.println("За какой месяц показать статистику?");
+                int month = scan.nextInt();
+                stepTracker.printStatistic(month);
+                stepTracker.getBestCount(stepForDay, month);
             } else if (command == 4) {
                 System.out.println("Выход");
                 break;
@@ -29,6 +49,10 @@ public class Main {
             }
         }
     }
+
+
+
+
 
     public static void printMenu() {
         System.out.println("Что вы хотите сделать? ");
