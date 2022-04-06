@@ -19,7 +19,7 @@ public class stepTracker {
     }
 
     //  Сохранение пройденных шагов
-     public static void enterStatistic() {
+      static void enterStatistic() {
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Какое сегодня число?");
