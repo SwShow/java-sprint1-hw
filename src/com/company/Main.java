@@ -19,6 +19,10 @@ public class Main {
             } else if (command == 2) {
                 System.out.println("За какой месяц показать статистику?");
                 int month = scan.nextInt();
+                while (month < 1 || month > 12) {
+                    System.out.println("Вы ввели неправильное число! Попробуйте снова.");
+                    month = scan.nextInt();
+                }
                 StepTracker.printStatistic(month);
                 StepTracker.getBestCount(StepForDay, month);
             } else if (command == 3) {

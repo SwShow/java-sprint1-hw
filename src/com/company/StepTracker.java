@@ -5,14 +5,13 @@ import java.util.Scanner;
 public class StepTracker {
 
 
-    // Данные о шагах за определенный месяц,    массив создан наоборот для удобства пользователя
-    static int[][] fullStep2D = new int[30][12];    // что лучше: зарезервировать лишнюю ячейку или
+    // Данные о шагах за определенный месяц,
+    static int[][] fullStep2D = new int[30][12];
 
-    // производить вычисления в нескольких методах ?
     // Изменение целевого количества шагов
     public static int changeStepForDay() {
         while (true) {
-            Scanner sc = new Scanner(System.in);  // если вынести из метода, не работает
+            Scanner sc = new Scanner(System.in);
             int newStepForDay = sc.nextInt();
             if (newStepForDay > 0) {
                 return newStepForDay;
@@ -24,7 +23,7 @@ public class StepTracker {
 
     //  Сохранение пройденных шагов
     static void enterStatistic() {
-        Scanner scan = new Scanner(System.in);    // если вынести из метода, не работает
+        Scanner scan = new Scanner(System.in);
         System.out.println("Какое сегодня число?");
         int day = scan.nextInt();
         while (day < 1 || day > 30) {
@@ -43,8 +42,9 @@ public class StepTracker {
         int i = day - 1;
         int j = month - 1;
         fullStep2D[i][j] = scan.nextInt();
-        if (fullStep2D[i][j] < 0) {
+        while (fullStep2D[i][j] < 0) {
             askOtherNumber();
+            fullStep2D[i][j] = scan.nextInt();
         }
         System.out.println(day + "." + month + "." + " шагов: " + fullStep2D[i][j]);
     }
